@@ -1,0 +1,61 @@
+.btn {
+  min-width: 100px;
+  border-radius: 4px;
+  font-family: inherit;
+  position: relative;
+  padding: 8px 20px;
+  background-color: var(--accent-color);
+  color: var(--neutral-placeholder);
+  font-weight: 400;
+  cursor: pointer;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    background-color: var(--default-color);
+    padding: 50%;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1);
+    transition: transform .75s, opacity .75s linear;
+  }
+  &:active::before {
+    transition: 0s;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0);
+  }
+
+  &.b-icon {
+    min-width: 46px;
+    padding: 5px;
+
+    &.active {
+      & > i {
+        animation: rotate .4s linear;
+      }
+    }
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+  }
+
+  &.col {
+    background-color: var(--accent-secondary);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

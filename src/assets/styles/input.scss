@@ -1,0 +1,11 @@
+.input-field {
+  width: 100%;
+  background-color: var(--neutral-primary);
+  border-radius: 4px;
+  color: var(--neutral-placeholder);
+  padding: 15px;
+
+  &::placeholder {
+    color: var(--neutral-placeholder);
+  }
+}

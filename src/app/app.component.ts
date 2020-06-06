@@ -6,5 +6,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'ng-learn';
+
+  name = '';
+  details = false;
+  number = 0;
+  numbers: number[] = [];
+
+  constructor() { }
+
+  onClick() {
+    this.details = !this.details;
+    this.number++;
+    this.numbers.push(this.number);
+  }
 }
