@@ -1,62 +1,7 @@
 <section class="view">
   <div class="container view-container">
-    <!------------ Task 1 ------------>
-    <div class="section">
-      <div class="panel">
-        <div class="panel__content">
-          <span class="helper">Enter your name</span>
-          <div class="input-group">
-            <input
-              class="input-field pad-right"
-              type="text"
-              placeholder="Name"
-              [(ngModel)]="name"
-            >
-            <button
-              class="btn b-icon"
-              [disabled]="!name.length"
-              (click)="name = ''"
-              title="reset"
-            >
-              <i class="fas fa-redo-alt"></i>
-            </button>
-          </div>
-          <div class="output">
-            <i class="fas fa-long-arrow-alt-right"></i>
-            <span>{{ !name ? 'Name output...' : name  }}</span>
-          </div>
-        </div>
-      </div>
-      <!------------ Task 2 ------------>
-      <div class="panel">
-        <div class="panel__content">
-          <button class="btn col" (click)="onClick()">Details</button>
-          <div class="collapsible" [ngClass]="{ 'active': details }">
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam nostrum quidem a ad nisi, laudantium
-              accusantium tempore consectetur doloremque repudiandae quod culpa ipsam quo ullam, unde voluptatum libero,
-              eveniet omnis.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="section">
-      <div class="num-output" *ngIf="numbers.length; else placeholder">
-        <p
-          class="num"
-          *ngFor="let num of numbers, let idx = index"
-          [ngStyle]="{
-              'background-color': idx > 4 ? '#0a4587' : '#303133',
-              'color': idx < 5 ? '#606266' : '#c0c4cc'
-            }"
-        >
-          {{ num }}
-        </p>
-      </div>
-      <ng-template #placeholder>
-        <p [ngStyle]="{'align-self': 'center', 'color': '#c0c4cc'}">No data to display...</p>
-      </ng-template>
-    </div>
+    <app-odd class="square" [odd]="odd"></app-odd>
+    <app-even class="square" [even]="even"></app-even>
+    <app-control class="long" (number)="getNum($event)"></app-control>
   </div>
 </section>

@@ -7,16 +7,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  name = '';
-  details = false;
-  number = 0;
-  numbers: number[] = [];
+  even: number[] = [];
+  odd: number[] = [];
 
   constructor() { }
 
-  onClick() {
-    this.details = !this.details;
-    this.number++;
-    this.numbers.push(this.number);
+  getNum(num: number) {
+    if(num % 2 === 0) {
+      this.even.push(num);
+    } else {
+      this.odd.push(num);
+    }
   }
 }

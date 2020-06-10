@@ -46,6 +46,15 @@
   &.col {
     background-color: var(--accent-secondary);
   }
+
+  &.pad-right {
+    margin-right: 25px;
+  }
+
+  & > i {
+    font-size: 10px;
+    margin-left: 10px;
+  }
 }
 
 @keyframes rotate {

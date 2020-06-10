@@ -1,101 +1,26 @@
 .view {
   height: 100vh;
-  background-color: var(--neutral-main);
 
   &-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    padding: 4rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 25px;
   }
 }
 
-.section {
-  width: 45%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.panel {
-  width: 100%;
-  &:first-child {
-    margin-bottom: 80px;
-  }
-  &:last-child {
-    height: 200px;
-  }
-  &__content {
-    display: flex;
-    flex-direction: column;
-  }
-}
-
-.collapsible {
-  max-height: 0;
-  margin-top: 20px;
-  background-color: var(--neutral-primary);
-  border-left: 4px solid var(--neutral-placeholder);
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
-  & > p {
-    padding: 20px;
-    color: var(--neutral-placeholder);
-    line-height: 1.5em;
-    font-weight: 300;
-  }
-  &.active {
-    max-height: 200px;
-  }
-}
-
-.input-group {
-  display: flex;
-}
-
-.pad-right {
-  margin-right: 15px;
-}
-
-.helper {
-  margin-bottom: 40px;
-  color: var(--neutral-regular);
-  font-size: 24px;
-}
-
-.output {
-  margin-top: 20px;
-  border-bottom: 1px solid var(--neutral-primary);
-  color: var(--neutral-placeholder);
-  padding: 15px 15px 15px 0px;
-  font-size: 16px;
-  display: flex;
-  align-items: center;
-
-  & > i {
-    margin-right: 10px;
-    color: var(--neutral-regular);
-  }
-}
-
-.num-output {
-  height: 480px;
+.square {
+  max-height: 280px;
+  overflow: auto;
   padding: 20px;
-  display: grid;
-  grid-template-columns: repeat(8, auto);
-  grid-gap: 10px;
+  border: 1px solid var(--neutral-placeholder);
 }
 
-.num {
+.long {
+  grid-column: span 2;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 4px;
-
-  &.active {
-    color: var(--neutral-placeholder);
-    background-color: var(--accent-color-darken);
-  }
+  border: 1px solid var(--neutral-placeholder);
 }
-
-
