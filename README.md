@@ -6,4 +6,4 @@
 
 :point_right: [`lesson-2 / data-binding | directives`](https://github.com/AnjKrynskyi/ng-learn/tree/lesson-2/data-binding) | :cloud: [`deployment`](https://ng-bind.web.app/)
 
-:point_right: [`lesson-3 / component-interaction`](https://github.com/AnjKrynskyi/ng-learn/edit/lesson-3/component-interaction) | :cloud: [`deployment`](https://ng-interaction.web.app/)
+:point_right: [`lesson-3 / component-interaction`](https://github.com/AnjKrynskyi/ng-learn/tree/lesson-3/component-interaction) | :cloud: [`deployment`](https://ng-interaction.web.app/)
