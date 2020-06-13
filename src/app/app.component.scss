@@ -1,26 +1,28 @@
-.view {
-  height: 100vh;
-
-  &-container {
-    padding: 4rem;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    grid-gap: 25px;
-  }
+.view-container {
+  padding: 4rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 25px;
 }
 
 .square {
-  max-height: 280px;
-  overflow: auto;
   padding: 20px;
   border: 1px solid var(--neutral-placeholder);
+  color: var(--default-color);
 }
 
 .long {
+  padding: 20px;
   grid-column: span 2;
   display: flex;
   justify-content: center;
   align-items: center;
   border: 1px solid var(--neutral-placeholder);
+}
+
+.odd {
+  background-color: var(--accent-regular);
+}
+.even {
+  background-color: var(--accent-secondary);
 }

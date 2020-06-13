@@ -1,7 +1,37 @@
 <section class="view">
   <div class="container view-container">
-    <app-odd class="square" [odd]="odd"></app-odd>
-    <app-even class="square" [even]="even"></app-even>
-    <app-control class="long" (number)="getNum($event)"></app-control>
+    <app-control
+      class="long"
+      (number)="getNum($event)"
+      (reset)="reset($event)"
+    ></app-control>
+    <ng-container *ngIf="odd.length || even.length else placeholder">
+      <app-odd
+        class="square odd"
+        *ngFor="let num of odd"
+        [odd]="num"
+      ></app-odd>
+      <app-even
+        class="square even"
+        *ngFor="let num of even"
+        [even]="num"
+      ></app-even>
+    </ng-container>
+    <ng-template #placeholder>
+      <p [ngStyle]="{
+        'display': 'flex',
+        'alignItems': 'center'
+      }">
+        Press start
+        <i
+          class="fas fa-play"
+          [ngStyle]="{
+            'fontSize': '10px',
+            'margin': '0px 5px'
+          }"
+        ></i>
+        to run the app
+      </p>
+    </ng-template>
   </div>
 </section>

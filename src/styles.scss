@@ -19,10 +19,7 @@ body {
 }
 
 .display {
-  display: grid;
-  grid-template-columns: repeat(8, auto);
-  grid-gap: 10px;
-  padding-top: 15px;
+  padding-top: 10px;
 }
 
 .title {

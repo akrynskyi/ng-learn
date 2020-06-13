@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class OddComponent implements OnInit {
 
-  @Input() odd: number[];
+  @Input() odd: number;
 
   constructor() { }
 

@@ -19,4 +19,11 @@ export class AppComponent {
       this.odd.push(num);
     }
   }
+
+  reset(rs: boolean) {
+    if(rs) {
+      this.even = [];
+      this.odd = [];
+    }
+  }
 }
