@@ -1,0 +1,44 @@
+<div class="container view">
+
+  <h1>Directives</h1>
+
+  <hr>
+
+  <div class="inp-group">
+    <h2>Focus Dir</h2>
+    <input
+      type="text"
+      placeholder="Focus"
+      class="input-field"
+      appFocus="yellow"
+    >
+  </div>
+
+  <div class="inp-group">
+    <h2>Hide Dir</h2>
+    <input
+      type="text"
+      placeholder="Hide"
+      class="input-field"
+      [(ngModel)]="val"
+    >
+    <button
+      class="btn"
+      *appHide="val"
+    >Continue</button>
+  </div>
+
+  <div class="inp-group">
+    <h2>Hover Dir</h2>
+    <input
+      type="text"
+      placeholder="Hover"
+      class="input-field"
+      [appHover]="{
+        'color': 'green',
+        'fontSize': '36px'
+      }"
+    >
+  </div>
+
+</div>

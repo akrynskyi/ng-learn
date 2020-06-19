@@ -1,0 +1,31 @@
+.view {
+  min-height: 100vh;
+  padding: 80px 0px;
+}
+
+h1 {
+  font-size: 28px;
+}
+
+hr {
+  margin: 25px 0px;
+}
+
+.inp-group {
+  margin-bottom: 20px;
+
+  h2 {
+    margin-bottom: 15px;
+  }
+
+  button {
+    margin-top: 15px;
+  }
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid var(--neutral-placeholder);
+  border-radius: 4px;
+}
