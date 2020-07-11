@@ -26,4 +26,33 @@ body {
   font-weight: 600;
   border-bottom: 1px solid var(--neutral-placeholder);
   padding-bottom: 10px;
+
+  &.border-none {
+    border: none;
+  }
+}
+
+.item {
+  padding: 20px;
+  border: 1px solid var(--neutral-placeholder);
+  color: var(--default-color);
+  margin-bottom: 20px;
+}
+
+.detail {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--neutral-placeholder);
+  padding: 20px;
+
+  & > p {
+    background-color: var(--base);
+    padding: 7px;
+    height: 100%;
+    flex-grow: 1;
+    text-align: center;
+    margin-left: 15px;
+  }
+
 }

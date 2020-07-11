@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-control',
@@ -7,13 +7,16 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class ControlComponent implements OnInit {
 
-  @Output() number = new EventEmitter<number>();
-  @Output() reset = new EventEmitter<boolean>();
   status = 'Zzz...';
-  count = 1;
   run = false;
-  rs = false;
-  intervalHandle: any;
+
+  @Output() control = new EventEmitter<boolean>();
+
+  @Input('isComplete') set isComplete(value: string) {
+    if(!value) return;
+    this.status = value;
+    this.run = false;
+  }
 
   constructor() { }
 
@@ -23,21 +26,12 @@ export class ControlComponent implements OnInit {
   start() {
     this.run = true;
     this.status = 'Started';
-    this.reset.emit(this.rs);
-    this.intervalHandle = setInterval(() => this.number.emit(this.count++), 2000);
-  }
-
-  pause() {
-    this.run = false;
-    this.status = 'Paused';
-    clearInterval(this.intervalHandle);
+    this.control.emit(this.run);
   }
 
   stop() {
     this.run = false;
     this.status = 'Stoped';
-    this.count = 1;
-    this.reset.emit(!this.rs);
-    clearInterval(this.intervalHandle);
+    this.control.emit(this.run);
   }
 }

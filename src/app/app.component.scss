@@ -5,12 +5,6 @@
   grid-gap: 25px;
 }
 
-.square {
-  padding: 20px;
-  border: 1px solid var(--neutral-placeholder);
-  color: var(--default-color);
-}
-
 .long {
   padding: 20px;
   grid-column: span 2;
@@ -18,11 +12,4 @@
   justify-content: center;
   align-items: center;
   border: 1px solid var(--neutral-placeholder);
-}
-
-.odd {
-  background-color: var(--accent-regular);
-}
-.even {
-  background-color: var(--accent-secondary);
 }

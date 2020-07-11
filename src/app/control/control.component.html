@@ -1,13 +1,10 @@
 <div class="wrapper">
   <p>Status: {{ status }}</p>
+
   <div class="control-group">
     <button class="btn pad-right" [disabled]="run" (click)="start()">
       <span>Start</span>
       <i class="fas fa-play"></i>
-    </button>
-    <button class="btn pad-right" [disabled]="!run" (click)="pause()">
-      <span>Pause</span>
-      <i class="fas fa-pause"></i>
     </button>
     <button class="btn" [disabled]="!run" (click)="stop()">
       <span>Stop</span>

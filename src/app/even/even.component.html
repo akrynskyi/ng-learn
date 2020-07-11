@@ -1,4 +1,22 @@
-<h1 class="title">Even</h1>
-<div class="display">
-  <span>{{ even }}</span>
+<h1 class="title border-none">Even component</h1>
+
+<div class="detail">
+  <button
+    class="btn"
+    (click)="evenSubject.next(showOddDetails = !showOddDetails)"
+  >Show odd details</button>
+  <p *ngIf="oddSubject | async">Even details</p>
 </div>
+
+<ng-container *ngIf="even.length; else placeholder">
+  <div class="item even" *ngFor="let num of even">
+    <h1 class="title">Even</h1>
+    <div class="display">
+      <span>{{ num }}</span>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #placeholder>
+  <p>No data...</p>
+</ng-template>
