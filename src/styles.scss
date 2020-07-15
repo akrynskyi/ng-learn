@@ -1,5 +1,6 @@
 @use './assets/styles/reset.scss';
 @use './assets/styles/vars.scss';
+@use './assets/styles/button.scss';
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
@@ -12,4 +13,18 @@ body {
   max-width: 1280px;
   width: 100%;
   margin: 0 auto;
+}
+
+.input-field {
+  width: 100%;
+  min-height: 40px;
+  padding: 10px 15px;
+  border: 1px solid var(--neutral-placeholder);
+  border-radius: 4px;
+  transition: all .2s ease-in-out;
+
+  &:focus {
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    border: 2px solid rgba(81, 203, 238, 1);
+  }
 }
