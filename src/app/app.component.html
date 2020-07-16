@@ -1,0 +1,161 @@
+<div class="container view">
+  <h1 class="heading">Login Form</h1>
+
+  <form
+    class="form"
+    #loginForm="ngForm"
+    (ngSubmit)="onSubmit(loginForm)"
+  >
+    <div class="form__control">
+      <label>Name</label>
+      <input
+        type="text"
+        placeholder="Name"
+        class="input-field"
+        name="name"
+        ngModel
+        #name="ngModel"
+        required
+      >
+      <p
+        class="form__helper"
+        *ngIf="name.touched && name.invalid"
+      >Name is required</p>
+    </div>
+
+    <div class="form__control">
+      <label>Email</label>
+      <input
+        type="email"
+        placeholder="Email"
+        class="input-field"
+        name="email"
+        ngModel
+        #email="ngModel"
+        required
+        email
+      >
+      <p
+        class="form__helper"
+        *ngIf="email.touched && email.invalid"
+      >{{ !email.value ? 'Email is required' : 'Incorrect email' }}</p>
+    </div>
+
+    <div class="form__control">
+      <label>Password</label>
+      <input
+        type="password"
+        placeholder="Password"
+        class="input-field"
+        name="password"
+        ngModel
+        #password="ngModel"
+        required
+        minlength="6"
+      >
+      <p
+        class="form__helper"
+        *ngIf="password.touched && password.invalid"
+      >
+        {{
+          !password.value
+          ? 'Password is required'
+          : 'Password min length is ' + password.errors.minlength.requiredLength + ' characters. Current length is ' + password.errors.minlength.actualLength
+        }}
+      </p>
+    </div>
+
+    <div class="form__control">
+      <label>Favorite meal</label>
+      <select
+        class="input-field"
+        name="meal"
+        [ngModel]="selected"
+        required
+      >
+        <option
+          [ngValue]="null"
+          disabled
+          selected
+        >Choose you favorite meal</option>
+        <option
+          *ngFor="let meal of meals"
+          [ngValue]="meal"
+        >{{ meal }}</option>
+      </select>
+    </div>
+
+    <div class="form__group">
+      <span>Are you sure?</span>
+
+      <div class="form__control align-center">
+        <span>yes</span>
+        <input
+          type="radio"
+          value="yes"
+          name="question"
+          ngModel
+        >
+      </div>
+
+      <div class="form__control align-center">
+        <span>no</span>
+        <input
+          type="radio"
+          value="no"
+          name="question"
+          ngModel
+        >
+      </div>
+    </div>
+
+    <button
+      type="submit"
+      class="btn gap-right"
+      [disabled]="loginForm.invalid"
+      [title]="loginForm.invalid ? 'Complete all fields to continue' : 'Send'"
+    >Send</button>
+
+    <button
+      type="button"
+      class="btn"
+      [disabled]="loginForm.valid"
+      title="Autocomplete form"
+      (click)="loginForm.setValue(user)"
+    >Autocomplete</button>
+  </form>
+
+  <div
+    class="display"
+    *ngIf="submitted"
+  >
+    <h2>You submitted the following:</h2>
+
+    <div class="row">
+      <div>Name:</div>
+      <div>{{ user.name }}</div>
+    </div>
+
+    <div class="row">
+      <div>Email:</div>
+      <div>{{ user.email }}</div>
+    </div>
+
+    <div class="row">
+      <div>Password:</div>
+      <div>{{ user.password }}</div>
+    </div>
+
+    <div class="row">
+      <div>Meal:</div>
+      <div>{{ user.meal }}</div>
+    </div>
+
+    <div class="row">
+      <div>Question:</div>
+      <div>{{ user.question }}</div>
+    </div>
+
+    <button class="btn" (click)="submitted = false">Close</button>
+  </div>
+</div>
