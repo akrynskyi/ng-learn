@@ -1,44 +1,59 @@
 <div class="container view">
-  <h1 class="heading">Login Form</h1>
-
+  <h1 class="heading">Reactive Form</h1>
   <form
     class="form"
-    #loginForm="ngForm"
-    (ngSubmit)="onSubmit(loginForm)"
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()"
   >
     <div class="form__control">
       <label>Name</label>
-      <input
-        type="text"
-        placeholder="Name"
-        class="input-field"
-        name="name"
-        ngModel
-        #name="ngModel"
-        required
-      >
-      <p
+      <div class="input-wrap">
+        <input
+          type="text"
+          placeholder="Name"
+          class="input-field"
+          formControlName="name"
+        >
+        <app-loader *ngIf="form.get('name').pending"></app-loader>
+      </div>
+      <div
         class="form__helper"
-        *ngIf="name.touched && name.invalid"
-      >Name is required</p>
+        *ngIf="form.get('name').touched && form.get('name').invalid"
+      >
+        <span *ngIf="form.get('name').hasError('required')">
+          Name is required
+        </span>
+        <span *ngIf="form.get('name').hasError('forbiddenName')">
+          Name {{ form.get('name').getError('forbiddenName').name }} is forbidden 😢
+        </span>
+      </div>
     </div>
 
     <div class="form__control">
       <label>Email</label>
-      <input
-        type="email"
-        placeholder="Email"
-        class="input-field"
-        name="email"
-        ngModel
-        #email="ngModel"
-        required
-        email
-      >
-      <p
+      <div class="input-wrap">
+        <input
+          type="email"
+          placeholder="Email"
+          class="input-field"
+          formControlName="email"
+        >
+        <app-loader *ngIf="form.get('email').pending"></app-loader>
+      </div>
+      <div
         class="form__helper"
-        *ngIf="email.touched && email.invalid"
-      >{{ !email.value ? 'Email is required' : 'Incorrect email' }}</p>
+        *ngIf="form.get('email').touched && form.get('email').invalid"
+      >
+        <span *ngIf="form.get('email').hasError('required')">
+          Email is required
+        </span>
+        <span *ngIf="form.get('email').hasError('email')">
+          Incorrect email
+        </span>
+        <span *ngIf="form.get('email').hasError('uniqueEmail')">
+          {{ form.get('email').getError('uniqueEmail').error }}
+        </span>
+      </div>
     </div>
 
     <div class="form__control">
@@ -47,81 +62,110 @@
         type="password"
         placeholder="Password"
         class="input-field"
-        name="password"
-        ngModel
-        #password="ngModel"
-        required
-        minlength="6"
+        formControlName="password"
       >
-      <p
+      <div
         class="form__helper"
-        *ngIf="password.touched && password.invalid"
+        *ngIf="form.get('password').touched && form.get('password').invalid"
       >
-        {{
-          !password.value
-          ? 'Password is required'
-          : 'Password min length is ' + password.errors.minlength.requiredLength + ' characters. Current length is ' + password.errors.minlength.actualLength
-        }}
-      </p>
-    </div>
-
-    <div class="form__control">
-      <label>Favorite meal</label>
-      <select
-        class="input-field"
-        name="meal"
-        [ngModel]="selected"
-        required
-      >
-        <option
-          [ngValue]="null"
-          disabled
-          selected
-        >Choose you favorite meal</option>
-        <option
-          *ngFor="let meal of meals"
-          [ngValue]="meal"
-        >{{ meal }}</option>
-      </select>
-    </div>
-
-    <div class="form__group">
-      <span>Are you sure?</span>
-
-      <div class="form__control align-center">
-        <span>yes</span>
-        <input
-          type="radio"
-          value="yes"
-          name="question"
-          ngModel
-        >
-      </div>
-
-      <div class="form__control align-center">
-        <span>no</span>
-        <input
-          type="radio"
-          value="no"
-          name="question"
-          ngModel
-        >
+        <span *ngIf="form.get('password').hasError('required')">
+          Password is required
+        </span>
+        <span *ngIf="form.get('password').hasError('minlength')">
+          Password min length is {{ form.get('password').getError('minlength').requiredLength }} characters, current length is {{ form.get('password').getError('minlength').actualLength }}
+        </span>
       </div>
     </div>
+
+    <ng-container formGroupName="extra">
+      <div class="form__control">
+        <label>Favorite meal</label>
+        <select
+          class="input-field"
+          formControlName="meal"
+        >
+          <option
+            disabled
+            [ngValue]="null"
+          >
+            Choose your favourite meal
+          </option>
+          <option
+            *ngFor="let meal of meals"
+            [ngValue]="meal"
+          >
+            {{ meal }}
+          </option>
+        </select>
+      </div>
+      <div
+        class="form__control"
+        formArrayName="countries"
+      >
+        <ng-container
+          *ngFor="let country of countries.controls; let idx = index"
+        >
+          <label class="gap">Country {{ idx + 1 }}</label>
+          <input
+            type="text"
+            placeholder="Start typing here..."
+            class="input-field"
+            [formControlName]="idx"
+          >
+          <div
+            class="form__helper"
+            *ngIf="countries.at(idx).touched && countries.at(idx).invalid"
+          >
+          <span *ngIf="countries.at(idx).hasError('required')">
+            This field is required
+          </span>
+        </div>
+        </ng-container>
+        <label class="gap">
+          Countries you would like to visit
+        </label>
+        <button
+          type="button"
+          class="btn btn-invert"
+          (click)="addCountry()"
+        >
+          Add country
+        </button>
+      </div>
+      <div class="form__group">
+        <span>Are you sure?</span>
+        <div class="form__control align-center">
+          <span>yes</span>
+          <input
+            type="radio"
+            value="yes"
+            formControlName="question"
+          >
+        </div>
+        <div class="form__control align-center">
+          <span>no</span>
+          <input
+            type="radio"
+            value="no"
+            formControlName="question"
+          >
+        </div>
+      </div>
+    </ng-container>
 
     <button
       type="submit"
       class="btn gap-right"
-      [disabled]="loginForm.invalid"
-      [title]="loginForm.invalid ? 'Complete all fields to continue' : 'Send'"
+      [disabled]="form.invalid || form.pending"
+      [title]="form.invalid ? 'complete all fields to continue' : 'send'"
     >Send</button>
 
     <button
       type="button"
       class="btn"
-      [disabled]="loginForm.valid"
-      title="Autocomplete form"
-      (click)="loginForm.setValue(user)"
+      (click)="form.setValue(user)"
+      [disabled]="form.valid || countries.controls.length"
+      title="autocomplete"
     >Autocomplete</button>
   </form>
 
@@ -148,14 +192,29 @@
 
     <div class="row">
       <div>Meal:</div>
-      <div>{{ user.meal }}</div>
+      <div>{{ user.extra.meal }}</div>
+    </div>
+
+    <div
+      class="row"
+      *ngIf="user.extra.countries.length"
+    >
+      <div>Countries:</div>
+      <ul>
+        <li
+          *ngFor="let country of user.extra.countries; let idx = index"
+        >{{ country }}{{ idx === user.extra.countries.length - 1 ? '' : ',' }}</li>
+      </ul>
     </div>
 
     <div class="row">
       <div>Question:</div>
-      <div>{{ user.question }}</div>
+      <div>{{ user.extra.question }}</div>
     </div>
 
-    <button class="btn" (click)="submitted = false">Close</button>
+    <button
+      class="btn"
+      (click)="submitted = false"
+    >Close</button>
   </div>
 </div>

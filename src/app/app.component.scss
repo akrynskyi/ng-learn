@@ -10,9 +10,11 @@
   background-color: var(--def);
   border: 1px solid var(--base);
   padding: 25px;
+  margin-bottom: 40px;
 
   &__control,
-  &__heading {
+  &__heading,
+  &__btn {
     margin-bottom: 20px;
   }
 
@@ -21,6 +23,10 @@
     font-size: 14px;
     margin-bottom: 10px;
     font-weight: 300;
+
+    &.gap {
+      margin-top: 20px;
+    }
   }
 
   &__control.align-center {
@@ -45,6 +51,10 @@
     display: flex;
     align-items: center;
   }
+}
+
+.input-wrap {
+  position: relative;
 }
 
 .input-field {
@@ -73,7 +83,7 @@
 
 .display {
   width: 100%;
-  margin: 40px 0px;
+  margin-bottom: 40px;
   padding: 25px;
   border: 1px solid #0366d6;
   box-shadow: 0 0 0 3px rgba(3,102,214,.3);
@@ -92,8 +102,12 @@
     margin-right: 10px;
     color: var(--neutral-regular);
   }
+
+  & > ul {
+    display: flex;
+
+    & > li {
+      margin-right: 5px;
+    }
+  }
 }
-
-
-
-

@@ -1,0 +1,14 @@
+@import '~loaders.css/src/animations/ball-beat.scss';
+
+.loader {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.ball-beat > div {
+  width: 10px;
+  height: 10px;
+  background-color: var(--accent-primary);
+}
