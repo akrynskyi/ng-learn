@@ -23,3 +23,5 @@
 :point_right: [`lesson-10 / rxjs-observable`](https://github.com/AnjKrynskyi/ng-learn/tree/lesson-10/rxjs-observable)
 
 :point_right: [`lesson-11 / forms`](https://github.com/AnjKrynskyi/ng-learn/tree/lesson-11/forms)
+
+:point_right: [`lesson-12 / reactive-forms`](https://github.com/AnjKrynskyi/ng-learn/tree/lesson-12/reactive-forms)
