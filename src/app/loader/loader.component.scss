@@ -1,14 +1,20 @@
 @import '~loaders.css/src/animations/ball-beat.scss';
 
 .loader {
-  position: absolute;
-  right: 15px;
-  top: 50%;
-  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 60px;
+
+  & > p {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 15px;
+  }
 }
 
 .ball-beat > div {
-  width: 10px;
-  height: 10px;
+  width: 15px;
+  height: 15px;
   background-color: var(--accent-primary);
 }

@@ -1,0 +1,93 @@
+<form
+    class="form"
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()"
+  >
+  <div class="form__control">
+    <input
+      type="text"
+      class="input-field"
+      placeholder="Post title"
+      formControlName="title"
+    >
+    <div
+      class="form__helper"
+      *ngIf="form.get('title').touched && form.get('title').invalid"
+    >
+      <span *ngIf="form.get('title').hasError('required')">
+        💡 Title is required
+      </span>
+    </div>
+  </div>
+
+  <div class="form__control">
+    <textarea
+      rows="15"
+      class="input-field text-field"
+      placeholder="Post text"
+      formControlName="text"
+    ></textarea>
+    <div
+      class="form__helper"
+      *ngIf="form.get('text').touched && form.get('text').invalid"
+    >
+      <span *ngIf="form.get('text').hasError('required')">
+        💡 Post should contains any text
+      </span>
+    </div>
+  </div>
+
+  <div
+    class="form__control"
+    *ngIf="imageFieldActive"
+  >
+    <input
+      type="text"
+      class="input-field validation-disable"
+      placeholder="🔗 Image url"
+      formControlName="image"
+    >
+  </div>
+
+  <div
+    class="form__control"
+    formArrayName="tags"
+    *ngFor="let tag of tags.controls; let idx = index"
+  >
+    <input
+      type="text"
+      class="input-field"
+      [placeholder]="'🏷️ Tag ' + (idx + 1)"
+      [formControlName]="idx"
+    >
+    <div
+      class="form__helper"
+      *ngIf="tags.at(idx).touched && tags.at(idx).invalid"
+    >
+      <span *ngIf="tags.at(idx).hasError('required')">
+        💡 This field can't be empty
+      </span>
+    </div>
+  </div>
+
+  <div class="form__action">
+    <button
+      type="submit"
+      class="btn"
+      [disabled]="form.invalid"
+      [title]="form.invalid ? 'complete all fields to continue' : 'send'"
+    >Send</button>
+    <div class="form__group">
+      <button
+        type="button"
+        class="btn btn-invert gap-right"
+        (click)="imageFieldActive = !imageFieldActive"
+      >Add image</button>
+      <button
+        type="button"
+        class="btn btn-invert"
+        (click)="addTag()"
+      >Add tag</button>
+    </div>
+  </div>
+</form>

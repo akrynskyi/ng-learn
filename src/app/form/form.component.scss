@@ -1,0 +1,79 @@
+.form {
+  min-width: 580px;
+  background-color: var(--def);
+  border: 1px solid var(--base);
+  border-radius: 6px;
+  padding: 25px;
+
+  &__control {
+    margin-bottom: 20px;
+  }
+
+  &__control > label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 10px;
+    font-weight: 300;
+
+    &.gap {
+      margin-top: 20px;
+    }
+  }
+
+  &__control.align-center {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+  }
+
+  &__action {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__group {
+    display: flex;
+  }
+
+  &__helper {
+    width: 100%;
+    min-height: 40px;
+    padding: 10px 15px;
+    background-color: var(--lighter);
+    border-radius: 4px;
+    color: var(--accent-main);
+    font-size: 14px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.input-field {
+  width: 100%;
+  min-height: 40px;
+  padding: 10px 15px;
+  border: 1px solid var(--neutral-placeholder);
+  border-radius: 4px;
+  transition: all .2s ease-in-out;
+
+  &.text-field {
+    min-height: 264px;
+  }
+
+  &:focus {
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    border: 2px solid rgba(81, 203, 238, 1);
+  }
+
+  &.ng-touched.ng-invalid {
+    box-shadow: 0 0 5px rgb(238, 81, 81);
+    border: 2px solid rgb(238, 81, 81);
+  }
+
+  &.ng-valid:not(.validation-disable) {
+    box-shadow: 0 0 5px rgb(81, 238, 120);
+    border: 2px solid rgb(81, 238, 120);
+  }
+}
