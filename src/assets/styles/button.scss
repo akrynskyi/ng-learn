@@ -1,7 +1,7 @@
 .btn {
   position: relative;
   font-family: inherit;
-  font-weight: 400;
+  font-weight: 500;
   padding: 10px 20px;
   background-color: var(--accent-main);
   color: var(--neutral-placeholder);
@@ -31,6 +31,11 @@
   &:disabled {
     cursor: not-allowed;
     opacity: 0.75;
+  }
+
+  &.success {
+    background-color: #3ac05b;
+    color: var(--def);
   }
 
   &.b-icon {

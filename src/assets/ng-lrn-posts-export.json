@@ -1,0 +1,22 @@
+{
+  "-MD57jSRFo29yY_GbblO" : {
+    "date" : 1595683303276,
+    "image" : "https://media.giphy.com/media/1zRfp0Jwsag4yPekP4/giphy.gif",
+    "tags" : [ "Car", "Night", "Black" ],
+    "text" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "title" : "New car"
+  },
+  "-MD5CWkUSkSsJBRAj3UC" : {
+    "date" : 1595684557852,
+    "image" : "https://media.giphy.com/media/l0HlStAU4gizJ548U/giphy.gif",
+    "tags" : [ "Palms", "Ocean", "Sunrise", "Road" ],
+    "text" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "title" : "Travel"
+  },
+  "-MD5NVd9v7TEcUy952u9" : {
+    "date" : 1595687436828,
+    "tags" : [ "Very", "First", "Post", "Test", "123" ],
+    "text" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "title" : "First post"
+  }
+}

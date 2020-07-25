@@ -74,6 +74,7 @@
     <button
       type="submit"
       class="btn"
+      [class.success]="form.valid"
       [disabled]="form.invalid"
       [title]="form.invalid ? 'complete all fields to continue' : 'send'"
     >Send</button>

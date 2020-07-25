@@ -1,44 +1,61 @@
 <ul
   class="posts"
-  *ngIf="posts$ | async as posts; else loading"
+  *ngIf="postService.posts$ | async as posts; else loading"
 >
-  <li
-    class="post"
-    *ngFor="let post of posts"
+  <ng-container
+    *ngIf="posts.length; else placeholder"
   >
-    <div class="post__content">
-      <div class="post__header">
-        <h3>{{ post.title }}</h3>
-        <p>24.07.2020</p>
-      </div>
-      <div class="post__text">
-        <p>{{ post.text }}</p>
-      </div>
-
-      <ng-container *ngIf="post.tags">
-        <div class="post__namespace">
-          Tags:
+    <li
+      class="post"
+      *ngFor="let post of posts"
+    >
+      <div class="post__content">
+        <div class="post__header">
+          <h3>{{ post.title | titlecase }}</h3>
+          <p>{{ post.date | date }}</p>
         </div>
-        <ul class="post__tags">
-          <li
-            class="post__tags-tag"
-            *ngFor="let tag of post.tags"
-          >{{ tag }}</li>
-        </ul>
-      </ng-container>
-    </div>
-    <div class="post__image">
-      <img
-        [src]="post.image"
-        [alt]="post.title"
-        *ngIf="post.image"
+        <div class="post__text">
+          <p>{{ post.text | cutText:100 }}</p>
+        </div>
+
+        <ng-container *ngIf="post.tags">
+          <div class="post__namespace">
+            Tags:
+          </div>
+          <ul class="post__tags">
+            <li
+              class="post__tags-tag"
+              *ngFor="let tag of post.tags"
+            >{{ tag | titlecase }}</li>
+          </ul>
+        </ng-container>
+      </div>
+      <div class="post__image">
+        <img
+          [src]="post.image"
+          [alt]="post.title"
+          *ngIf="post.image"
+        >
+        <i
+          class="fas fa-image"
+          *ngIf="!post.image"
+        ></i>
+      </div>
+    </li>
+
+    <li class="action">
+      <button
+        class="btn btn-invert"
+        (click)="postService.deletePosts()"
       >
-      <i
-        class="fas fa-image"
-        *ngIf="!post.image"
-      ></i>
-    </div>
-  </li>
+        🗑️ Delete all posts
+      </button>
+    </li>
+  </ng-container>
+
+  <ng-template #placeholder>
+    <p class="placeholder">No posts available...</p>
+  </ng-template>
 </ul>
 
 <ng-template #loading>

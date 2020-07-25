@@ -1,9 +1,9 @@
 .form {
-  min-width: 580px;
+  min-width: var(--minwidth);
   background-color: var(--def);
   border: 1px solid var(--base);
   border-radius: 6px;
-  padding: 25px;
+  padding: 40px 25px;
 
   &__control {
     margin-bottom: 20px;
@@ -60,6 +60,7 @@
 
   &.text-field {
     min-height: 264px;
+    line-height: 1.5;
   }
 
   &:focus {

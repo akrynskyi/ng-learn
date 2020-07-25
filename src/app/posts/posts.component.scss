@@ -1,10 +1,11 @@
 .posts {
+  width: var(--minwidth);
   margin-top: 60px;
   margin-bottom: 60px;
 }
 
 .post {
-  max-width: 580px;
+  width: 100%;
   display: flex;
   padding: 18px 15px;
   border-radius: 8px;
@@ -13,7 +14,7 @@
   color: var(--base);
   box-shadow:
     0 3px 1px -2px rgba(0,0,0,.2),
-    0 2px 2px 0 rgba(0,0,0,.14),
+    0 2px 2px 0 rgba(219, 201, 201, 0.14),
     0 1px 5px 0 rgba(0,0,0,.12);
 
   &:not(:first-child) {
@@ -21,16 +22,16 @@
   }
 
   &__namespace {
-    margin: 5px;
+    margin: 5px 5px 8px 5px;
     font-size: 13px;
     font-weight: 500;
-    color: var(--neutral-regular);
+    color: var(--neutral-secondary);
   }
 
   &__content {
     display: flex;
     flex-direction: column;
-    flex-basis: 400px;
+    flex-grow: 1;
     margin-right: 15px;
     padding: 5px 0px;
   }
@@ -45,7 +46,7 @@
       padding-top: 8px;
       font-size: 11px;
       font-weight: 500;
-      color: var(--neutral-regular);
+      color: var(--neutral-secondary);
     }
   }
 
@@ -61,13 +62,15 @@
     row-gap: 5px;
 
     &-tag {
+      min-width: 40px;
       padding: 5px 8px;
       margin-right: 6px;
       font-size: 11px;
       font-weight: 500;
-      color: var(--neutral-regular);
+      color: var(--neutral-secondary);
       border: 1px solid var(--neutral-placeholder);
       border-radius: 50px;
+      text-align: center;
     }
   }
 
@@ -88,4 +91,19 @@
       object-fit: cover;
     }
   }
+}
+
+.action {
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+}
+
+.placeholder {
+  width: 100%;
+  padding: 20px 10px;
+  background-color: var(--lighter);
+  border-radius: 8px;
+  font-weight: 500;
+  text-align: center;
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
+import { FormGroup, Validators, FormArray, FormBuilder } from '@angular/forms';
 import { PostService, Post } from '../shared/post.service';
 
 @Component({
@@ -10,18 +10,19 @@ import { PostService, Post } from '../shared/post.service';
 export class FormComponent implements OnInit {
 
   form: FormGroup;
-
-  submitted = false;
   imageFieldActive = false;
 
-  constructor(private postService: PostService) { }
+  constructor(
+    private postService: PostService,
+    private fb: FormBuilder
+  ) { }
 
   ngOnInit(): void {
-    this.form = new FormGroup({
-      title: new FormControl(null, Validators.required),
-      text: new FormControl(null, Validators.required),
-      image: new FormControl(null),
-      tags: new FormArray([])
+    this.form = this.fb.group({
+      title: [null, Validators.required],
+      text: [null, Validators.required],
+      image: [null],
+      tags: this.fb.array([])
     });
   }
 
@@ -30,13 +31,17 @@ export class FormComponent implements OnInit {
   }
 
   addTag() {
-    this.tags.push(new FormControl(null, Validators.required));
+    this.tags.push(this.fb.control(null, Validators.required));
   }
 
   onSubmit() {
-    this.postService.writePost(this.form.value as Post);
-    this.submitted = true;
+    const post = this.form.value as Post;
+    this.postService
+      .writePost(post)
+      .subscribe(() => this.postService.getPosts());
     this.form.reset();
     this.tags.clear();
+    this.imageFieldActive = false;
   }
+
 }
