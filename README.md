@@ -25,3 +25,5 @@
 :point_right: [`lesson-11 / forms`](https://github.com/AnjKrynskyi/ng-learn/tree/lesson-11/forms)
 
 :point_right: [`lesson-12 / reactive-forms`](https://github.com/AnjKrynskyi/ng-learn/tree/lesson-12/reactive-forms)
+
+:point_right: [`lesson-13 / http-client`](https://github.com/AnjKrynskyi/ng-learn/tree/lesson-13/http-client)
