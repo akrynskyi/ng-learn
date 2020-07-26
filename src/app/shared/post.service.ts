@@ -26,8 +26,8 @@ export class PostService {
     return throwError('Something goes wrong try to fresh page...');
   }
 
-  writePost(post: Post): Observable<Post> {
-    return this.http.post<Post>('https://ng-lrn.firebaseio.com/posts.json', post)
+  writePost(post: Post): Observable<{name: string}> {
+    return this.http.post<{name: string}>('https://ng-lrn.firebaseio.com/posts.json', post)
       .pipe(catchError(this.handleError));
   }
 
@@ -36,7 +36,7 @@ export class PostService {
       .pipe(
         map(obj => {
           if (!obj) return [];
-          return Object.keys(obj).map(key => ({...obj[key], id: key}))
+          return Object.keys(obj).map(key => ({...obj[key], id: key}));
         }),
         catchError(this.handleError)
       );
@@ -47,4 +47,5 @@ export class PostService {
       .pipe(catchError(this.handleError))
       .subscribe(() => this.getPosts());
   }
+
 }
